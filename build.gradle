@@ -67,6 +67,9 @@ android {
         autoProguardConfig true
         autoUpload true
     }
+    buildFeatures {
+        viewBinding true
+    }
 }
 
 dependencies {
@@ -84,6 +87,10 @@ dependencies {
 
     //Admob
     implementation 'com.google.android.gms:play-services-ads:19.6.0'
+    implementation 'androidx.lifecycle:lifecycle-livedata-ktx:2.3.1'
+    implementation 'androidx.lifecycle:lifecycle-viewmodel-ktx:2.3.1'
+    implementation 'androidx.navigation:navigation-fragment:2.3.5'
+    implementation 'androidx.navigation:navigation-ui:2.3.5'
 
     // Room
     final roomVersion = "2.2.5"
@@ -124,4 +131,8 @@ dependencies {
 
     // Sentry
     implementation 'io.sentry:sentry-android:2.3.1'
+
+
+    implementation "androidx.navigation:navigation-fragment-ktx:$rootProject.navigation_version"
+    implementation "androidx.navigation:navigation-ui-ktx:$rootProject.navigation_version"
 }

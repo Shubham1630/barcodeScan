@@ -12,27 +12,28 @@
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
 
     <application
-        android:name="com.androidmarket.scanqr.App"
+        android:name=".App"
         android:allowBackup="true"
         android:icon="@drawable/icon"
         android:label="@string/app_name"
         android:roundIcon="@drawable/icon"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name="com.androidmarket.scanqr.activity.SplashActivity">
+        <activity
+            android:name=".activity.MainActivity2"
+            android:label="@string/title_activity_main2"></activity>
+        <activity android:name=".activity.SplashActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name="com.androidmarket.scanqr.activity.SettingActivity" />
-        <activity android:name="com.androidmarket.scanqr.activity.HistoryActivity" />
-        <activity android:name="com.androidmarket.scanqr.activity.CreateActivity" />
-        <activity android:name="com.androidmarket.scanqr.activity.ScanActivity" />
-        <activity android:name="com.androidmarket.scanqr.activity.MainActivity">
-
-        </activity>
+        <activity android:name=".activity.SettingActivity" />
+        <activity android:name=".activity.HistoryActivity" />
+        <activity android:name=".activity.CreateActivity" />
+        <activity android:name=".activity.ScanActivity" />
+        <activity android:name=".activity.MainActivity"></activity>
 
         <meta-data
             android:name="io.sentry.dsn"
@@ -49,7 +50,7 @@
         </provider>
 
         <service
-            android:name="com.androidmarket.scanqr.scanner_feature.tile.QuickSettingsTileService"
+            android:name=".scanner_feature.tile.QuickSettingsTileService"
             android:icon="@drawable/icon_scan"
             android:label="@string/app_name"
             android:permission="android.permission.BIND_QUICK_SETTINGS_TILE">
@@ -59,7 +60,7 @@
         </service>
 
         <activity
-            android:name="com.androidmarket.scanqr.scanner_feature.tabs.BottomTabsActivity"
+            android:name=".scanner_feature.tabs.BottomTabsActivity"
             android:configChanges="orientation|screenSize"
             android:screenOrientation="fullSensor">
             <intent-filter>
@@ -73,7 +74,7 @@
                 android:resource="@xml/shortcuts" />
         </activity>
         <activity
-            android:name="com.androidmarket.scanqr.scanner_feature.tabs.scan.file.ScanBarcodeFromFileActivity"
+            android:name=".scanner_feature.tabs.scan.file.ScanBarcodeFromFileActivity"
             android:configChanges="orientation|screenSize"
             android:screenOrientation="fullSensor"
             tools:ignore="AppLinkUrlError">
@@ -93,7 +94,7 @@
             </intent-filter>
         </activity>
         <activity
-            android:name="com.androidmarket.scanqr.scanner_feature.tabs.create.CreateBarcodeActivity"
+            android:name=".scanner_feature.tabs.create.CreateBarcodeActivity"
             android:configChanges="orientation|screenSize"
             android:screenOrientation="fullSensor"
             android:windowSoftInputMode="stateVisible">
@@ -113,55 +114,55 @@
             </intent-filter>
         </activity>
         <activity
-            android:name="com.androidmarket.scanqr.scanner_feature.tabs.create.qr.CreateQrCodeAllActivity"
+            android:name=".scanner_feature.tabs.create.qr.CreateQrCodeAllActivity"
             android:configChanges="orientation|screenSize"
             android:screenOrientation="fullSensor" />
         <activity
-            android:name="com.androidmarket.scanqr.scanner_feature.tabs.create.barcode.CreateBarcodeAllActivity"
+            android:name=".scanner_feature.tabs.create.barcode.CreateBarcodeAllActivity"
             android:configChanges="orientation|screenSize"
             android:screenOrientation="fullSensor" />
         <activity
-            android:name="com.androidmarket.scanqr.scanner_feature.barcode.BarcodeActivity"
+            android:name=".scanner_feature.barcode.BarcodeActivity"
             android:configChanges="orientation|screenSize"
             android:screenOrientation="fullSensor" />
         <activity
-            android:name="com.androidmarket.scanqr.scanner_feature.barcode.BarcodeImageActivity"
+            android:name=".scanner_feature.barcode.BarcodeImageActivity"
             android:configChanges="orientation|screenSize"
             android:screenOrientation="fullSensor" />
         <activity
-            android:name="com.androidmarket.scanqr.scanner_feature.barcode.otp.OtpActivity"
+            android:name=".scanner_feature.barcode.otp.OtpActivity"
             android:configChanges="orientation|screenSize"
             android:screenOrientation="fullSensor" />
         <activity
-            android:name="com.androidmarket.scanqr.scanner_feature.barcode.save.SaveBarcodeAsTextActivity"
+            android:name=".scanner_feature.barcode.save.SaveBarcodeAsTextActivity"
             android:configChanges="orientation|screenSize"
             android:screenOrientation="fullSensor" />
         <activity
-            android:name="com.androidmarket.scanqr.scanner_feature.barcode.save.SaveBarcodeAsImageActivity"
+            android:name=".scanner_feature.barcode.save.SaveBarcodeAsImageActivity"
             android:configChanges="orientation|screenSize"
             android:screenOrientation="fullSensor" />
         <activity
-            android:name="com.androidmarket.scanqr.scanner_feature.tabs.history.export.ExportHistoryActivity"
+            android:name=".scanner_feature.tabs.history.export.ExportHistoryActivity"
             android:configChanges="orientation|screenSize"
             android:screenOrientation="fullSensor" />
         <activity
-            android:name="com.androidmarket.scanqr.scanner_feature.tabs.settings.theme.ChooseThemeActivity"
+            android:name=".scanner_feature.tabs.settings.theme.ChooseThemeActivity"
             android:configChanges="orientation|screenSize"
             android:screenOrientation="fullSensor" />
         <activity
-            android:name="com.androidmarket.scanqr.scanner_feature.tabs.settings.camera.ChooseCameraActivity"
+            android:name=".scanner_feature.tabs.settings.camera.ChooseCameraActivity"
             android:configChanges="orientation|screenSize"
             android:screenOrientation="fullSensor" />
         <activity
-            android:name="com.androidmarket.scanqr.scanner_feature.tabs.settings.formats.SupportedFormatsActivity"
+            android:name=".scanner_feature.tabs.settings.formats.SupportedFormatsActivity"
             android:configChanges="orientation|screenSize"
             android:screenOrientation="fullSensor" />
         <activity
-            android:name="com.androidmarket.scanqr.scanner_feature.tabs.settings.search.ChooseSearchEngineActivity"
+            android:name=".scanner_feature.tabs.settings.search.ChooseSearchEngineActivity"
             android:configChanges="orientation|screenSize"
             android:screenOrientation="fullSensor" />
         <activity
-            android:name="com.androidmarket.scanqr.scanner_feature.tabs.settings.permissions.AllPermissionsActivity"
+            android:name=".scanner_feature.tabs.settings.permissions.AllPermissionsActivity"
             android:configChanges="orientation|screenSize"
             android:screenOrientation="fullSensor" />
 

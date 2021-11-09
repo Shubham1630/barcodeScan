@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+  xmlns:app="http://schemas.android.com/apk/res-auto"
+  android:id="@+id/mobile_navigation"
+  app:startDestination="@id/navigation_scan">
+
+  <fragment
+    android:id="@+id/navigation_scan"
+    android:name="com.androidmarket.scanqr.scanner_feature.tabs.scan.ScanBarcodeFromCameraFragment"
+    android:label="Scan" />
+<!--  <fragment-->
+<!--    android:id="@+id/navigation_slug"-->
+<!--    android:name="com.raywenderlich.feedmenav.SlugFragment"-->
+<!--    android:label="@string/slug" />-->
+</navigation>
