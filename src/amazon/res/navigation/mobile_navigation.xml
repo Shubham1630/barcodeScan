@@ -7,15 +7,27 @@
   <fragment
     android:id="@+id/navigation_scan"
     android:name="com.androidmarket.scanqr.scanner_feature.tabs.scan.ScanBarcodeFromCameraFragment"
-    android:label="Scan" />
+    android:label="Scan" >
+    <action
+        android:id="@+id/action_navigation_scan_to_navigation_create"
+        app:destination="@id/navigation_create" />
+  </fragment>
   <fragment
       android:id="@+id/navigation_create"
       android:name="com.androidmarket.scanqr.scanner_feature.tabs.create.CreateBarcodeFragment"
-      android:label="Create" />
+      android:label="Create" >
+    <action
+        android:id="@+id/action_navigation_create_to_navigation_history"
+        app:destination="@id/navigation_history" />
+  </fragment>
   <fragment
       android:id="@+id/navigation_history"
       android:name="com.androidmarket.scanqr.scanner_feature.tabs.history.BarcodeHistoryFragment"
-      android:label="History" />
+      android:label="History" >
+    <action
+        android:id="@+id/action_navigation_history_to_navigation_setting"
+        app:destination="@id/navigation_setting" />
+  </fragment>
   <fragment
       android:id="@+id/navigation_setting"
       android:name="com.androidmarket.scanqr.scanner_feature.tabs.settings.SettingsFragment"
