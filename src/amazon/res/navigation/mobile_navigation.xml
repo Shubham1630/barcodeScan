@@ -8,8 +8,20 @@
     android:id="@+id/navigation_scan"
     android:name="com.androidmarket.scanqr.scanner_feature.tabs.scan.ScanBarcodeFromCameraFragment"
     android:label="Scan" />
-<!--  <fragment-->
-<!--    android:id="@+id/navigation_slug"-->
-<!--    android:name="com.raywenderlich.feedmenav.SlugFragment"-->
-<!--    android:label="@string/slug" />-->
+  <fragment
+      android:id="@+id/navigation_create"
+      android:name="com.androidmarket.scanqr.scanner_feature.tabs.create.CreateBarcodeFragment"
+      android:label="Create" />
+  <fragment
+      android:id="@+id/navigation_history"
+      android:name="com.androidmarket.scanqr.scanner_feature.tabs.history.BarcodeHistoryFragment"
+      android:label="History" />
+  <fragment
+      android:id="@+id/navigation_setting"
+      android:name="com.androidmarket.scanqr.scanner_feature.tabs.settings.SettingsFragment"
+      android:label="Setting" />
+
+
+
+
 </navigation>
