@@ -5,6 +5,8 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import androidx.recyclerview.widget.GridLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 import com.androidmarket.scanqr.R
 import com.androidmarket.scanqr.scanner_extension.applySystemWindowInsets
 import com.androidmarket.scanqr.scanner_extension.clipboardManager
@@ -18,15 +20,33 @@ import kotlinx.android.synthetic.main.fragment_create_barcode.*
 
 class CreateBarcodeFragment : Fragment() {
 
+    private lateinit var  createBarcodeAdapter: CreateBarcodeAdapter
+    private var dataList = mutableListOf<DataModel>()
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
-        return inflater.inflate(R.layout.fragment_create_barcode, container, false)
+        return inflater.inflate(R.layout.fragment_create_barcode_gridview, container, false)
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        supportEdgeToEdge()
-        handleButtonsClicked()
+        val recyclerView = view.findViewById<RecyclerView>(R.id.create_barcode_recyclerView)
+
+        recyclerView.layoutManager = GridLayoutManager(context,3)
+        createBarcodeAdapter = CreateBarcodeAdapter(context)
+        recyclerView.adapter = createBarcodeAdapter
+
+            dataList.add(DataModel(resources.getString(R.string.fragment_create_barcode_qr_code_clipboard),R.drawable.ic_copy))
+            dataList.add(DataModel(resources.getString(R.string.fragment_create_barcode_qr_code_text),R.drawable.ic_text))
+            dataList.add(DataModel(resources.getString(R.string.barcode_schema_url),R.drawable.ic_link))
+            dataList.add(DataModel(resources.getString(R.string.barcode_schema_geo),R.drawable.ic_location))
+            dataList.add(DataModel(resources.getString(R.string.barcode_schema_v_card),R.drawable.ic_contact))
+            dataList.add(DataModel("Clipboard",R.drawable.ic_qr_code))
+            dataList.add(DataModel(R.string.fragment_create_barcode_show_all.toString(),R.drawable.ic_barcode))
+
+            createBarcodeAdapter.setDataList(dataList)
+
+//        supportEdgeToEdge()
+//        handleButtonsClicked()
 
     }
 
