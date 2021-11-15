@@ -28,21 +28,67 @@ class CreateBarcodeAdapter(var context: Context?) : RecyclerView.Adapter<CreateB
 
     // Provide a direct reference to each of the views with data items
 
-    class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
+    class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView), View.OnClickListener {
         var image: ImageView
         var title: TextView
 
 
         init {
             image = itemView.findViewById(R.id.image)
-            itemView.setOnClickListener {
-                when (adapterPosition) {
-                    0 -> CreateBarcodeActivity.start(itemView.context, BarcodeFormat.QR_CODE, BarcodeSchema.OTHER)
-                    1 -> CreateBarcodeActivity.start(itemView.context, BarcodeFormat.QR_CODE, BarcodeSchema.URL)
-                }
-
-            }
+//            itemView.setOnClickListener {
+//                when (adapterPosition) {
+//                    0 -> CreateBarcodeActivity.start(itemView.context, BarcodeFormat.QR_CODE, BarcodeSchema.OTHER)
+//                    1 -> CreateBarcodeActivity.start(itemView.context, BarcodeFormat.QR_CODE, BarcodeSchema.URL)
+//                }
+//
+//            }
             title = itemView.findViewById(R.id.title)
+            itemView.setOnClickListener(this);
+        }
+
+        override fun onClick(v: View) {
+            handleButtonsClicked(v);
+        }
+
+        private fun handleButtonsClicked(v: View) {
+            when (adapterPosition) {
+                0 -> CreateBarcodeActivity.start(v.context, BarcodeFormat.QR_CODE, BarcodeSchema.OTHER, getClipboardContent(v))
+                1 -> CreateBarcodeActivity.start(
+                    itemView.context,
+                    BarcodeFormat.QR_CODE,
+                    BarcodeSchema.URL
+                )
+                2 -> CreateBarcodeActivity.start(
+                    itemView.context,
+                    BarcodeFormat.QR_CODE,
+                    BarcodeSchema.OTHER
+                )
+                3 -> CreateBarcodeActivity.start(
+                    v.context,
+                    BarcodeFormat.QR_CODE,
+                    BarcodeSchema.WIFI
+                )
+                4 -> CreateBarcodeActivity.start(
+                    v.context,
+                    BarcodeFormat.QR_CODE,
+                    BarcodeSchema.GEO
+                )
+                5 -> CreateBarcodeActivity.start(
+                    v.context,
+                    BarcodeFormat.QR_CODE,
+                    BarcodeSchema.VCARD
+                )
+            }
+
+
+        }
+
+        private fun getClipboardContent(v: View): String {
+            val clip = v.context.clipboardManager?.primaryClip ?: return ""
+            return when (clip.itemCount.orZero()) {
+                0 -> ""
+                else -> clip.getItemAt(0).text.toString()
+            }
         }
 
 
@@ -73,18 +119,7 @@ class CreateBarcodeAdapter(var context: Context?) : RecyclerView.Adapter<CreateB
     //  total count of items in the list
     override fun getItemCount() = dataList.size
 
-//     fun handleButtonsClicked() {
-//        // QR code
-//         CreateBarcodeActivity.start(, BarcodeFormat.QR_CODE, BarcodeSchema.OTHER, getClipboardContent())
-//         CreateBarcodeActivity.start(requireActivity(), BarcodeFormat.QR_CODE, BarcodeSchema.URL)
-//         CreateBarcodeActivity.start(requireActivity(), BarcodeFormat.QR_CODE, BarcodeSchema.WIFI)
-//         CreateBarcodeActivity.start(requireActivity(), BarcodeFormat.QR_CODE, BarcodeSchema.GEO)
-//         CreateBarcodeActivity.start(requireActivity(), BarcodeFormat.QR_CODE, BarcodeSchema.VCARD)
-//         CreateQrCodeAllActivity.start(requireActivity())
-//
-//        // Barcode
-//         CreateBarcodeAllActivity.start(requireActivity())
-//    }
+
 //private fun getClipboardContent(): String {
 //    val clip = requireActivity().clipboardManager?.primaryClip ?: return ""
 //    return when (clip.itemCount.orZero()) {
